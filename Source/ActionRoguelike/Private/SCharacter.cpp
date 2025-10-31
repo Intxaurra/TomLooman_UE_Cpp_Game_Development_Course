@@ -3,10 +3,10 @@
 
 #include "SCharacter.h"
 
-#include <Camera/CameraComponent.h>
-#include <GameFramework/CharacterMovementComponent.h>
-#include <GameFramework/SpringArmComponent.h>
-#include <Kismet/KismetMathLibrary.h>
+#include <Engine/Classes/Camera/CameraComponent.h>
+#include <Engine/Classes/GameFramework/CharacterMovementComponent.h>
+#include <Engine/Classes/GameFramework/SpringArmComponent.h>
+#include <Engine/Classes/Kismet/KismetMathLibrary.h>
 
 // Sets default values
 ASCharacter::ASCharacter()
