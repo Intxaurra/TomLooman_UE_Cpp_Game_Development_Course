@@ -3,9 +3,9 @@
 
 #include "SMagicProjectile.h"
 
-#include <Components/SphereComponent.h>
-#include <GameFramework/ProjectileMovementComponent.h>
-#include <Particles/ParticleSystemComponent.h>
+#include <Engine/Classes/Components/SphereComponent.h>
+#include <Engine/Classes/GameFramework/ProjectileMovementComponent.h>
+#include <Engine/Classes/Particles/ParticleSystemComponent.h>
 
 // Sets default values
 ASMagicProjectile::ASMagicProjectile()
