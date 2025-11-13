@@ -6,6 +6,7 @@
 #include "GameFramework/Character.h"
 #include "SCharacter.generated.h"
 
+class UAnimMontage;
 class UCameraComponent;
 class USInteractionComponent;
 class USpringArmComponent;
@@ -17,8 +18,13 @@ class ACTIONROGUELIKE_API ASCharacter : public ACharacter
 
 protected:
 
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(EditAnywhere, Category = "Attack")
     TSubclassOf<AActor> ProjectileClass;
+    
+    UPROPERTY(EditAnywhere, Category = "Attack")
+    UAnimMontage* AttackAnim;
+    
+    FTimerHandle TimerHandle_PrimaryAttack;
 
 public:
     // Sets default values for this character's properties
@@ -43,6 +49,8 @@ protected:
     void MoveRight(float Value);
     
     void PrimaryAttack();
+    
+    void PrimaryAttack_TimeElapsed();
     
     void PrimaryInteract();
 
