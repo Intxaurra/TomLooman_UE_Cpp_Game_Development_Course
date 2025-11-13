@@ -8,6 +8,8 @@
 #include <Engine/Classes/GameFramework/SpringArmComponent.h>
 #include <Engine/Classes/Kismet/KismetMathLibrary.h>
 
+#include "ActionRoguelike/Public/SInteractionComponent.h"
+
 // Sets default values
 ASCharacter::ASCharacter()
 {
@@ -20,6 +22,8 @@ ASCharacter::ASCharacter()
     
     CameraComp = CreateDefaultSubobject<UCameraComponent>("CameraComp");
     CameraComp->SetupAttachment(SpringArmComp);
+    
+    InteractionComp = CreateDefaultSubobject<USInteractionComponent>("InteractionComp");
     
     GetCharacterMovement()->bOrientRotationToMovement = true;
     
@@ -70,6 +74,14 @@ void ASCharacter::PrimaryAttack()
     GetWorld()->SpawnActor<AActor>(ProjectileClass, SpawnTM, SpawnParams);
 }
 
+void ASCharacter::PrimaryInteract()
+{
+    if (InteractionComp)
+    {
+        InteractionComp->PrimaryInteract();
+    }
+}
+
 // Called every frame
 void ASCharacter::Tick(float DeltaTime)
 {
@@ -90,5 +102,6 @@ void ASCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponen
     
     PlayerInputComponent->BindAction("PrimaryAttack", EInputEvent::IE_Pressed, this, &ASCharacter::PrimaryAttack);
     PlayerInputComponent->BindAction("Jump", EInputEvent::IE_Pressed, this, &ACharacter::Jump);
+    PlayerInputComponent->BindAction("PrimaryInteract", EInputEvent::IE_Pressed, this, &ASCharacter::PrimaryInteract);
 }
 
