@@ -3,6 +3,7 @@
 
 #include "SCharacter.h"
 
+#include <ThumbnailHelpers.h>
 #include <Engine/Classes/Camera/CameraComponent.h>
 #include <Engine/Classes/GameFramework/CharacterMovementComponent.h>
 #include <Engine/Classes/GameFramework/SpringArmComponent.h>
@@ -79,6 +80,7 @@ void ASCharacter::PrimaryAttack_TimeElapsed()
 
     FActorSpawnParameters SpawnParams;
     SpawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+    SpawnParams.Instigator = this;
 
     GetWorld()->SpawnActor<AActor>(ProjectileClass, SpawnTM, SpawnParams);
 }
